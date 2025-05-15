@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <style>
       body {
-        font-family: 'Roboto', sans-serif; /* ここをRobotoに変更 */
+        font-family: 'Roboto', sans-serif;
       }
       .fade-in {
         animation: fadeIn 1s ease-in-out forwards;
@@ -20,35 +20,9 @@
         from { opacity: 0; }
         to { opacity: 1; }
       }
-      .code-block {
-        background-color: #1e293b; /* Dark background */
-        color: #f8fafc; /* Light text */
-        padding: 1rem;
-        border-radius: 0.375rem; /* Rounded corners */
-        overflow-x: auto; /* Horizontal scroll if needed */
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        font-size: 0.875rem; /* 14px */
-        line-height: 1.5rem; /* 24px */
-        margin-bottom: 1rem;
-        position: relative; /* Add this */
-      }
-      .code-block button {
-        position: absolute;
-        top: 0.5rem;
-        right: 0.5rem;
-        background-color: #4b5563; /* Gray background for button */
-        color: #f8fafc; /* Light text color */
-        padding: 0.25rem 0.5rem;
-        border-radius: 0.25rem;
-        font-size: 0.75rem;
-        cursor: pointer;
-        opacity: 0.7;
-        transition: opacity 0.2s ease;
-        border: none;
-      }
-      .code-block button:hover {
-        opacity: 1;
-      }
+      /* 削除されたコードブロックに関するスタイルは残していても問題ありませんが、不要であれば削除も可能です。 */
+      /* .code-block { ... } */
+      /* .code-block button { ... } */
       #notification-container {
         position: fixed;
         top: 2rem;
@@ -135,30 +109,9 @@
             <p class="text-gray-700 dark:text-gray-300 mb-4">
                 ...って、こんな喋り方してるけど、実は東京生まれです。田舎の方の東京とかじゃなくて、ガチの東京です。
             </p>
-            <p class="text-gray-700 dark:text-gray-300 mb-4">
-                <strong>プログラミングって、マジ難しいっすよね...。</strong><br>
-                例えば、画面に「Hello World!」って表示するだけでも、こんなコード書かないといけないんですよ。
-            </p>
-            <div class="code-block">
-                <pre><code>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Hello World!</title>
-</head>
-<body>
+            <!-- 削除された箇所 -->
+            <!-- プログラミングって、マジ難しいっすよね...。以降の段落とコードブロックが削除されました -->
 
-<h1>Hello World!</h1>
-
-</body>
-</html>
-                </code></pre>
-                <button onclick="copyCode(this)">コピー</button>
-            </div>
-            <p class="text-gray-700 dark:text-gray-300 mb-4">
-                こんなコード、自分には書けないっす...。 だから、AI(主にGemini)に色々お願いして、
-                Webサイトを作ってもらってるってわけです。
-            </p>
         </section>
 
         <section class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 mb-6 fade-in">
@@ -197,6 +150,8 @@
     <div id="notification-container"></div>
 
     <script>
+    // コードブロックが削除されたため、copyCode関数は不要ですが、残していてもエラーにはなりません。
+    // 不要であれば、以下のcopyCode関数定義とshowNotification関数定義も削除可能です。
     function copyCode(buttonElement) {
         const codeBlock = buttonElement.previousElementSibling;
         const codeText = codeBlock.innerText;

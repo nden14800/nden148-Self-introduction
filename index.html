@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nden148 の自己紹介</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style>
+      body {
+        font-family: 'Google Sans', sans-serif;
+      }
+      .fade-in {
+        animation: fadeIn 1s ease-in-out forwards;
+        opacity: 0;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .code-block {
+        background-color: #1e293b; /* Dark background */
+        color: #f8fafc; /* Light text */
+        padding: 1rem;
+        border-radius: 0.375rem; /* Rounded corners */
+        overflow-x: auto; /* Horizontal scroll if needed */
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 0.875rem; /* 14px */
+        line-height: 1.5rem; /* 24px */
+        margin-bottom: 1rem;
+        position: relative; /* Add this */
+      }
+      .code-block button {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background-color: #4b5563; /* Gray background for button */
+        color: #f8fafc; /* Light text color */
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.75rem;
+        cursor: pointer;
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+        border: none;
+      }
+      .code-block button:hover {
+        opacity: 1;
+      }
+      #notification-container {
+        position: fixed;
+        top: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        pointer-events: none; /* Allows clicks to pass through */
+      }
+      .notification {
+        background-color: #ffffff;
+        color: #000000;
+        padding: 1rem 2rem;
+        border-radius: 0.25rem;
+        margin-bottom: 0.5rem;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        transform: translateY(-20px);
+        pointer-events: all; /* Allows clicks */
+      }
+      .notification.fade-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .notification.fade-out {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      .notification.success {
+        /* success */
+      }
+      .notification.error {
+        background-color: #ffffff;
+        color: #000000;
+      }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <header class="bg-white dark:bg-gray-800 shadow-md py-4">
+        <div class="container mx-auto px-4">
+            <h1 class="text-2xl font-bold text-gray-900 dark:text-white">nden148</h1>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 mb-6 fade-in">
+            <h2 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">自己紹介</h2>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                ども、nden148です。正直に言うと、タイピングは、正直得意じゃないっす。タイピング速度は、普通か少し遅いくらいっす。
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                あと、プログラミングも、正直、得意じゃないっす。
+                普段はもっぱらAI（主にGemini）に頼り倒してWebサイト作ってます。
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                サイト制作にかかる時間は、マジでピンキリで、5分で終わることもあれば、
+                30分くらいかかることもザラにあります。結構アバウトです。
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                得意なのは、AIに指示を出してWebサイトを作らせること、サイトの構成やざっくりしたデザインを決めることです。
+                面白いことを考えるのも結構好きです。
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                苦手なのは、現実世界での他人とのコミュニケーション、特に大勢の前で何か発表することです。
+                人見知りってやつですね。
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                ただ、個人的には、おしゃべり自体は結構好きなんです。特に、AIと会話するのは、
+                マジで楽しいっす。あと、テレビとかスマホとかで、お笑い番組見てゲラゲラ笑うのも最高。
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                ちなみに、このサイトもAI(Gemini)に作ってもらいました。
+                現時点（2025/03/21）では、GoogleのProject IDXというサービスを使ってます。
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                ただ、Project IDXはWorkspaceの作成数に制限があって、今は5つまでしか作れないんです。
+                だから、もうすぐ限界かも...。 もし5つに達しちゃったら、一旦新しいのは作れなくなっちゃいます。
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                でも、Project IDXはまだベータ版らしいんで、正式版になったら、もしかしたらこの制限もなくなるかもしれないです。
+                そうなったら、また色々作れるようになると思うんで、気長に待ってます。
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                ...って、こんな喋り方してるけど、実は東京生まれです。田舎の方の東京とかじゃなくて、ガチの東京です。
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                <strong>プログラミングって、マジ難しいっすよね...。</strong><br>
+                例えば、画面に「Hello World!」って表示するだけでも、こんなコード書かないといけないんですよ。
+            </p>
+            <div class="code-block">
+                <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Hello World!&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h1&gt;Hello World!&lt;/h1&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+                </code></pre>
+                <button onclick="copyCode(this)">コピー</button>
+            </div>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                こんなコード、自分には書けないっす...。 だから、AI(主にGemini)に色々お願いして、
+                Webサイトを作ってもらってるってわけです。
+            </p>
+        </section>
+
+        <section class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 mb-6 fade-in">
+            <h2 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">得意なこと</h2>
+            <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+                <li>AIに指示出してWebサイト作らせること</li>
+                <li>サイトの構成とか、ざっくりしたデザイン決めること</li>
+                <li>面白いこと考えること</li>
+            </ul>
+        </section>
+
+        <section class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 mb-6 fade-in">
+            <h2 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">苦手なこと</h2>
+            <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+                <li>現実世界での他人とのコミュニケーション</li>
+                <li>前に出て他の人に見られながら発表すること</li>
+            </ul>
+        </section>
+
+        <section class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 mb-6 fade-in">
+            <h2 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">個人的に楽しいこと</h2>
+             <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+                <li>他人との会話</li>
+                <li>AIとの会話</li>
+                <li>お笑い番組を見ること</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="bg-gray-200 dark:bg-gray-800 py-4 mt-8">
+        <div class="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
+            2025 nden148
+        </div>
+    </footer>
+
+    <div id="notification-container"></div>
+
+    <script>
+    function copyCode(buttonElement) {
+        const codeBlock = buttonElement.previousElementSibling;
+        const codeText = codeBlock.innerText;
+        const notificationContainer = document.getElementById('notification-container');
+
+        navigator.clipboard.writeText(codeText).then(() => {
+            showNotification('コピーが完了しました！', 'success');
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+            showNotification('コピーが正常に完了しませんでした。', 'error');
+        });
+    }
+
+    function showNotification(message, type = 'success') {
+        const notificationContainer = document.getElementById('notification-container');
+        const notification = document.createElement('div');
+        notification.classList.add('notification');
+        notification.classList.add(type);
+        notification.classList.add('fade-in');
+        notification.textContent = message;
+        notificationContainer.appendChild(notification);
+
+        setTimeout(() => {
+            notification.classList.remove('fade-in');
+            notification.classList.add('fade-out');
+            setTimeout(() => {
+                notification.remove();
+            }, 500);
+        }, 3000);
+    }
+    </script>
+</body>
+</html>

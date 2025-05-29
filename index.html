@@ -3,183 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nden148 の自己紹介</title>
+    <title>nden148 自己紹介</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-      body {
-        font-family: 'Roboto', sans-serif;
-      }
-      .fade-in {
-        animation: fadeIn 1s ease-in-out forwards;
-        opacity: 0;
-      }
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-      /* 削除されたコードブロックに関するスタイルは残していても問題ありませんが、不要であれば削除も可能です。 */
-      /* .code-block { ... } */
-      /* .code-block button { ... } */
-      #notification-container {
-        position: fixed;
-        top: 2rem;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        pointer-events: none; /* Allows clicks to pass through */
-      }
-      .notification {
-        background-color: #ffffff;
-        color: #000000;
-        padding: 1rem 2rem;
-        border-radius: 0.25rem;
-        margin-bottom: 0.5rem;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-        transform: translateY(-20px);
-        pointer-events: all; /* Allows clicks */
-      }
-      .notification.fade-in {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .notification.fade-out {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      .notification.success {
-        /* success */
-      }
-      .notification.error {
-        background-color: #ffffff;
-        color: #000000;
-      }
+        :root {
+            --bg-color-light: #f4f7f6;
+            --text-color-light: #333;
+            --card-bg-color-light: #ffffff;
+            --border-color-light: #e0e0e0;
+            --accent-color-light: #007bff;
+            --shadow-color-light: rgba(0, 0, 0, 0.1);
+            --header-border-color-light: #0056b3;
+
+            --bg-color-dark: #1a1a2e;
+            --text-color-dark: #e0e0e0;
+            --card-bg-color-dark: #2a2a4e;
+            --border-color-dark: #44446e;
+            --accent-color-dark: #5d8bff;
+            --shadow-color-dark: rgba(255, 255, 255, 0.08);
+            --header-border-color-dark: #3d6bbF;
+        }
+
+        [data-theme="light"] {
+            --bg-color: var(--bg-color-light);
+            --text-color: var(--text-color-light);
+            --card-bg-color: var(--card-bg-color-light);
+            --border-color: var(--border-color-light);
+            --accent-color: var(--accent-color-light);
+            --shadow-color: var(--shadow-color-light);
+            --header-border-color: var(--header-border-color-light);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: var(--bg-color-dark);
+            --text-color: var(--text-color-dark);
+            --card-bg-color: var(--card-bg-color-dark);
+            --border-color: var(--border-color-dark);
+            --accent-color: var(--accent-color-dark);
+            --shadow-color: var(--shadow-color-dark);
+            --header-border-color: var(--header-border-color-dark);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: 300;
+        }
+
+        .container {
+            background-color: var(--card-bg-color);
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            max-width: 800px;
+            width: 100%;
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--header-border-color);
+            transition: border-bottom-color 0.3s ease;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            font-size: 2.8em;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            transition: color 0.3s ease;
+        }
+
+        h2 {
+            color: var(--accent-color);
+            font-size: 1.8em;
+            font-weight: 500;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+        }
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        p, li {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+            margin-bottom: 12px;
+        }
+
+        .section-box {
+            background-color: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section-box:last-child {
+            margin-bottom: 0;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            filter: brightness(1.2);
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+        }
+
+        ul li::before {
+            content: '❖';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .youtube-details {
+            border-left: 3px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 10px;
+            transition: border-left-color 0.3s ease;
+        }
+
+        /* Fade-in Animation (Pure Fade-in) */
+        .fade-in-element {
+            opacity: 0;
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--text-color);
+            transition: border-top-color 0.3s ease, color 0.3s ease;
+            min-height: 30px;
+        }
+
     </style>
 </head>
-<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-    <header class="bg-white dark:bg-gray-800 shadow-md py-4">
-        <div class="container mx-auto px-4">
-            <h1 class="text-2xl font-bold text-gray-900 dark:text-white">nden148</h1>
+<body>
+
+    <div class="container">
+        <header class="fade-in-element">
+            <h1>nden148</h1>
+            <p class="fade-in-element" style="animation-delay: 0.1s;">Web Developer (sometimes) & Content Creator (in training)</p>
+        </header>
+
+        <div class="section-box fade-in-element" style="animation-delay: 0.2s;">
+            <h2>自己紹介</h2>
+            <p class="fade-in-element" style="animation-delay: 0.3s;">
+                こんにちは、nden148です。個人で活動しており、開発は主な作業ではありませんが、時々ソフトウェアやウェブサイトを作っています。
+                新しい技術を学ぶことや、自分のアイデアを形にすることに興味があります。
+            </p>
+            <p class="fade-in-element" style="animation-delay: 0.4s;">
+                普段は主にゲームをプレイしたり、YouTubeなどの動画を見たりして過ごしています。
+                現実世界では他人とのコミュニケーションや大勢の前で何かを発表することは少し苦手で、人見知りな一面もあります。
+                オンラインでの活動を通じて、少しずつ自分を表現していければと考えています。
+            </p>
+            <p class="fade-in-element" style="animation-delay: 0.5s;">
+                開発の合間や普段の息抜きには、お笑い番組や動画を見てリフレッシュするのが好きです。笑いは日々の大切な活力源です！
+            </p>
         </div>
-    </header>
 
-    <main class="container mx-auto px-4 py-8">
-        <section class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 mb-6 fade-in">
-            <h2 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">自己紹介</h2>
-            <p class="text-gray-700 dark:text-gray-300 mb-4">
-                ども、nden148です。正直に言うと、タイピングは、正直得意じゃないっす。タイピング速度は、普通か少し遅いくらいっす。
+        <div class="section-box fade-in-element" style="animation-delay: 0.6s;">
+            <h2>開発スタイルと経緯</h2>
+            <p class="fade-in-element" style="animation-delay: 0.7s;">
+                以前はFirebase Studioを愛用していましたが、ワークスペースの10個制限や、時折感じる読み込みの遅さに課題を感じていました。
             </p>
-            <p class="text-gray-700 dark:text-gray-300 mb-4">
-                あと、プログラミングも、正直、得意じゃないっす。
-                普段はもっぱらAI（主にGemini）に頼り倒してWebサイト作ってます。
+            <p class="fade-in-element" style="animation-delay: 0.8s;">
+                これらの理由から、より柔軟でスケーラブルな開発環境を求め、現在はGitHubをメインのプラットフォームとして活動しています。バージョン管理やコラボレーションのしやすさが魅力です。
             </p>
-            <p class="text-gray-700 dark:text-gray-300 mb-4">
-                サイト制作にかかる時間は、マジでピンキリで、5分で終わることもあれば、
-                30分くらいかかることもザラにあります。結構アバウトです。
+            <p class="fade-in-element" style="animation-delay: 0.9s;">
+                ちなみに、私自身はコードを直接記述することが得意ではないため、この自己紹介サイトの作成を含め、開発の多くの場面でGoogleのAI「Gemini」にサポートしてもらっています。アイデアを形にするための強力なパートナーです。
             </p>
-            <p class="text-gray-700 dark:text-gray-300 mb-4">
-                得意なのは、AIに指示を出してWebサイトを作らせること、サイトの構成やざっくりしたデザインを決めることです。
-                面白いことを考えるのも結構好きです。
-            </p>
-            <p class="text-gray-700 dark:text-gray-300 mb-4">
-                苦手なのは、現実世界での他人とのコミュニケーション、特に大勢の前で何か発表することです。
-                人見知りってやつですね。
-            </p>
-            <p class="text-gray-700 dark:text-gray-300 mb-4">
-                ただ、個人的には、おしゃべり自体は結構好きなんです。特に、AIと会話するのは、
-                マジで楽しいっす。あと、テレビとかスマホとかで、お笑い番組見てゲラゲラ笑うのも最高。
-            </p>
-            <p class="text-gray-700 dark:text-gray-300 mb-4">
-                ちなみに、このサイトもAI(Gemini)に作ってもらいました。
-                現時点（2025/05/15）では、GitHubというサービスを使ってるっす。
-            </p>
-            <p class="text-gray-700 dark:text-gray-300 mb-4">
-                前まではGoogleのFirebase Studioを使ってたんですけど、ウェブサイトが10個しか作れないので、GitHubに移行したって感じっすね。
-            </p>
-            <p class="text-gray-700 dark:text-gray-300 mb-4">
-                やっぱり、GitHubの方が使いやすいっすね。
-            </p>
-            <p class="text-gray-700 dark:text-gray-300 mb-4">
-                ちなみに、東京出身っす。現在も東京に住んでるっす。
-            </p>
-            <!-- 削除された箇所 -->
-            <!-- プログラミングって、マジ難しいっすよね...。以降の段落とコードブロックが削除されました -->
-
-        </section>
-
-        <section class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 mb-6 fade-in">
-            <h2 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">得意なこと</h2>
-            <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
-                <li>AIに指示出してWebサイト作らせること</li>
-                <li>サイトの構成とか、ざっくりしたデザイン決めること</li>
-                <li>面白いこと考えること</li>
-            </ul>
-        </section>
-
-        <section class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 mb-6 fade-in">
-            <h2 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">苦手なこと</h2>
-            <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
-                <li>現実世界での他人とのコミュニケーション</li>
-                <li>前に出て他の人に見られながら発表すること</li>
-            </ul>
-        </section>
-
-        <section class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 mb-6 fade-in">
-            <h2 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white">個人的に楽しいこと</h2>
-             <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
-                <li>他人との会話</li>
-                <li>AIとの会話</li>
-                <li>お笑い番組を見ること</li>
-            </ul>
-        </section>
-    </main>
-
-    <footer class="bg-gray-200 dark:bg-gray-800 py-4 mt-8">
-        <div class="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
-            2025 nden148
         </div>
-    </footer>
 
-    <div id="notification-container"></div>
+        <div class="section-box fade-in-element" style="animation-delay: 1.0s;">
+            <h2>YouTubeチャンネル</h2>
+            <p class="fade-in-element" style="animation-delay: 1.1s;">
+                YouTubeアカウントも開設しました！
+            </p>
+            <div class="youtube-details fade-in-element" style="animation-delay: 1.2s;">
+                <p class="fade-in-element" style="animation-delay: 1.3s;"><strong>チャンネル名:</strong> nden148</p>
+                <p class="fade-in-element" style="animation-delay: 1.4s;"><strong>ハンドル:</strong> @nden148-x2g</p>
+                <p class="fade-in-element" style="animation-delay: 1.5s;">
+                    <strong>URL:</strong> <a href="https://www.youtube.com/@nden148-x2g" target="_blank" rel="noopener noreferrer">https://www.youtube.com/@nden148-x2g</a>
+                </p>
+                <ul class="fade-in-element" style="animation-delay: 1.6s;">
+                    <li class="fade-in-element" style="animation-delay: 1.7s;">チャンネル登録者数: 0人</li>
+                    <li class="fade-in-element" style="animation-delay: 1.8s;">総再生回数: 0回</li>
+                </ul>
+            </div>
+            <p class="fade-in-element" style="animation-delay: 1.9s;">
+                <strong>投稿予定の内容:</strong> 自分で作ったウェブサイトやアプリケーションの紹介、開発プロセスの共有のほか、ブログ的なコンテンツ、ゲームをプレイしながら実況をしたり、気になる商品のレビュー、さまざまな検証や企画など、多岐にわたる内容を考えています。
+            </p>
+            <p class="fade-in-element" style="animation-delay: 2.0s;">
+                まだ動画投稿は開始していませんが、いつか時々コンテンツをアップロードしていく予定です。ぜひチェックしてみてください！
+            </p>
+        </div>
+
+        <footer class="fade-in-element" style="animation-delay: 2.1s;">
+            <!-- コピーライト情報は削除されました -->
+        </footer>
+    </div>
 
     <script>
-    // コードブロックが削除されたため、copyCode関数は不要ですが、残していてもエラーにはなりません。
-    // 不要であれば、以下のcopyCode関数定義とshowNotification関数定義も削除可能です。
-    function copyCode(buttonElement) {
-        const codeBlock = buttonElement.previousElementSibling;
-        const codeText = codeBlock.innerText;
-        const notificationContainer = document.getElementById('notification-container');
+        document.addEventListener('DOMContentLoaded', () => {
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-        navigator.clipboard.writeText(codeText).then(() => {
-            showNotification('コピーが完了しました！', 'success');
-        }).catch(err => {
-            console.error('Failed to copy text: ', err);
-            showNotification('コピーが正常に完了しませんでした。', 'error');
+            function setTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+            }
+
+            // Set initial theme
+            if (prefersDarkScheme.matches) {
+                setTheme('dark');
+            } else {
+                setTheme('light');
+            }
+
+            // Listen for changes
+            prefersDarkScheme.addEventListener('change', (event) => {
+                if (event.matches) {
+                    setTheme('dark');
+                } else {
+                    setTheme('light');
+                }
+            });
         });
-    }
-
-    function showNotification(message, type = 'success') {
-        const notificationContainer = document.getElementById('notification-container');
-        const notification = document.createElement('div');
-        notification.classList.add('notification');
-        notification.classList.add(type);
-        notification.classList.add('fade-in');
-        notification.textContent = message;
-        notificationContainer.appendChild(notification);
-
-        setTimeout(() => {
-            notification.classList.remove('fade-in');
-            notification.classList.add('fade-out');
-            setTimeout(() => {
-                notification.remove();
-            }, 500);
-        }, 3000);
-    }
     </script>
+
 </body>
 </html>

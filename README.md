@@ -10,7 +10,8 @@
 
 Cloudflare Pages に公開していたサイトも終了しました。
 
-現在は Cloudflare Pages プロジェクトを削除しているため、公開サイトは利用できません。
+- 公開サイト: `https://nden148-self-introduction.pages.dev`
+- 現在は Cloudflare Pages プロジェクトを削除しているため、公開サイトは利用できません。
 
 ## Repository status
 
